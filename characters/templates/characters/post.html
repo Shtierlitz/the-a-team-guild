@@ -1,0 +1,148 @@
+{% extends 'characters/base.html' %}
+
+{% block content %}
+
+<h1 class="char-title">{{post.title}}</h1>
+
+
+{% if post.photo %}
+<p><img class="char-img" src="{{post.photo.url}}"></p>
+{% endif %}
+<p class="char-title-about"><strong>{{post.about}}</strong></p>
+
+<div class="ability">
+    {% if post.photo_skill_11 %}
+    <p><img class="ability-photo" src="{{post.photo_skill_11.url}}"></p>
+    <p><strong>{{post.abil11}}</strong></p>
+    {% if post.skil11 %}
+    {% autoescape off %}
+    {{post.skil7|linebreaks}}
+    {% endautoescape %}
+    {% endif %}
+    {% endif %}
+</div>
+
+<div class="ability">
+    {% if post.photo_skill_1 %}
+    <p><img class="ability-photo" src="{{post.photo_skill_1.url}}"></p>
+    <p><strong>{{post.abil1}}</strong></p>
+    {% if post.skil2 %}
+    {% autoescape off %}
+    {{post.skil1|linebreaks}}
+    {% endautoescape %}
+    {% endif %}
+    {% endif %}
+</div>
+
+<div class="ability">
+    {% if post.photo_skill_2 %}
+    <p><img class="ability-photo" src="{{post.photo_skill_2.url}}"></p>
+    <p><strong>{{post.abil2}}</strong></p>
+    {% if post.skil2 %}
+    {% autoescape off %}
+    {{post.skil2|linebreaks}}
+    {% endautoescape %}
+    {% endif %}
+    {% endif %}
+</div>
+
+<div class="ability">
+    {% if post.photo_skill_3 %}
+    <p><img class="ability-photo" src="{{post.photo_skill_3.url}}"></p>
+    <p><strong>{{post.abil3}}</strong></p>
+    {% if post.skil3 %}
+    {% autoescape off %}
+    {{post.skil3|linebreaks}}
+    {% endautoescape %}
+    {% endif %}
+    {% endif %}
+</div>
+
+<div class="ability">
+    {% if post.photo_skill_4 %}
+    <p><img class="ability-photo" src="{{post.photo_skill_4.url}}"></p>
+    <p><strong>{{post.abil4}}</strong></p>
+    {% if post.skil4 %}
+    {% autoescape off %}
+    {{post.skil4|linebreaks}}
+    {% endautoescape %}
+    {% endif %}
+    {% endif %}
+</div>
+
+<div class="ability">
+    {% if post.photo_skill_5 %}
+    <p><img class="ability-photo" src="{{post.photo_skill_5.url}}"></p>
+    <p><strong>{{post.abil5}}</strong></p>
+    {% if post.skil5 %}
+    {% autoescape off %}
+    {{post.skil5|linebreaks}}
+    {% endautoescape %}
+    {% endif %}
+    {% endif %}
+</div>
+
+<div class="ability">
+    {% if post.photo_skill_6 %}
+    <p><img class="ability-photo" src="{{post.photo_skill_6.url}}"></p>
+    <p><strong>{{post.abil6}}</strong></p>
+    {% if post.skil6 %}
+    {% autoescape off %}
+    {{post.skil6|linebreaks}}
+    {% endautoescape %}
+    {% endif %}
+    {% endif %}
+</div>
+
+<div class="ability">
+    {% if post.photo_skill_7 %}
+    <p><img class="ability-photo" src="{{post.photo_skill_7.url}}"></p>
+    <p><strong>{{post.abil7}}</strong></p>
+    {% if post.skil7 %}
+    {% autoescape off %}
+    {{post.skil7|linebreaks}}
+    {% endautoescape %}
+    {% endif %}
+    {% endif %}
+</div>
+
+<div class="ability">
+    {% if post.photo_skill_8 %}
+    <p><img class="ability-photo" src="{{post.photo_skill_8.url}}"></p>
+    <p><strong>{{post.abil8}}</strong></p>
+    {% if post.skil8 %}
+    {% autoescape off %}
+    {{post.skil7|linebreaks}}
+    {% endautoescape %}
+    {% endif %}
+    {% endif %}
+</div>
+
+<div class="ability">
+    {% if post.photo_skill_9 %}
+    <p><img class="ability-photo" src="{{post.photo_skill_9.url}}"></p>
+    <p><strong>{{post.abil9}}</strong></p>
+    {% if post.skil9 %}
+    {% autoescape off %}
+    {{post.skil7|linebreaks}}
+    {% endautoescape %}
+    {% endif %}
+    {% endif %}
+</div>
+
+<div class="ability">
+    {% if post.photo_skill_10 %}
+    <p><img class="ability-photo" src="{{post.photo_skill_10.url}}"></p>
+    <p><strong>{{post.abil10}}</strong></p>
+    {% if post.skil10 %}
+    {% autoescape off %}
+    {{post.skil7|linebreaks}}
+    {% endautoescape %}
+    {% endif %}
+    {% endif %}
+</div>
+
+</table>
+
+{% endblock %}
+

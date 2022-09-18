@@ -1,0 +1,233 @@
+{% extends 'characters/base.html' %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+
+    <form action="{% url 'add_page' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %} <!-- защита от перехвата формы -->
+        <!--    {{ form.as_p }}     &lt;!&ndash; формирует поля формы &ndash;&gt;-->
+
+        <p><label class="form-label"
+                  for="{{ form.title.id_for_label }}">{{ form.title.label }}: </label>{{ form.title }}</p>
+        <div class="form-error">{{ form.title.errors }}</div>
+
+        <p><label class="form-label" for="{{ form.slug.id_for_label }}">{{ form.slug.label }}: </label>{{ form.slug }}
+        </p>
+        <div class="form-error">{{ form.slug.errors }}</div>
+
+        <p><label class="form-label"
+                  for="{{ form.about.id_for_label }}">{{ form.about.label }}: </label>{{ form.about }}</p>
+        <div class="form-error">{{ form.about.errors }}</div>
+
+        <p><label class="form-label" for="{{ form.is_published.id_for_label }}">
+            {{ form.is_published.label }}: </label>{{ form.is_published }}</p>
+        <div class="form-error">{{ form.is_published.errors }}</div>
+
+        <p><label class="form-label"
+                  for="{{ form.photo.id_for_label }}">{{ form.photo.label }}: </label>{{ form.photo }}</p>
+        <div class="form-error">{{ form.photo.errors }}</div>
+
+        <p><label class="form-label" for="{{ form.cat.id_for_label }}">{{ form.cat.label }}: </label>{{ form.cat }}</p>
+        <div class="form-error">{{ form.cat.errors }}</div>
+
+
+
+        <div class="abil-form">
+
+            <h3>Способности:</h3>
+
+            <p><strong><label class="form-label"
+                      for="{{ form.abil1.id_for_label }}">{{ form.abil1.label }}: </label></strong>{{ form.abil1 }}</p>
+            <div class="form-error">{{ form.abil1.errors }}</div>
+
+            <p><label class="form-label"
+                      for="{{ form.skil1.id_for_label }}">{{ form.skil1.label }}: </label>{{ form.skil1 }}</p>
+            <div class="form-error">{{ form.skil1.errors }}</div>
+
+            <p><label class="form-label"
+                      for="{{ form.photo_skill_1.id_for_label }}">{{ form.photo_skill_1.label }}: </label>{{ form.photo_skill_1 }}
+            </p>
+            <div class="form-error">{{ form.photo_skill_1.errors }}</div>
+        </div>
+
+        <div class="abil-form">
+            <p><strong><label class="form-label"
+                      for="{{ form.abil2.id_for_label }}">{{ form.abil2.label }}: </label></strong>{{ form.abil2 }}
+            </p>
+            <div class="form-error">{{ form.abil2.errors }}</div>
+
+            <p><label class="form-label"
+                      for="{{ form.skil2.id_for_label }}">{{ form.skil2.label }}: </label>{{ form.skil2 }}
+            </p>
+            <div class="form-error">{{ form.skil2.errors }}</div>
+
+            <p><label class="form-label"
+                      for="{{ form.photo_skill_2.id_for_label }}">{{ form.photo_skill_2.label }}: </label>{{ form.photo_skill_2 }}
+            </p>
+            <div class="form-error">{{ form.photo_skill_2.errors }}</div>
+        </div>
+
+        <div class="abil-form">
+            <p><strong><label class="form-label"
+                      for="{{ form.abil3.id_for_label }}">{{ form.abil3.label }}: </label></strong>{{ form.abil3 }}
+            </p>
+            <div class="form-error">{{ form.abil3.errors }}</div>
+
+            <p><label class="form-label"
+                      for="{{ form.skil3.id_for_label }}">{{ form.skil3.label }}: </label>{{ form.skil3 }}
+            </p>
+            <div class="form-error">{{ form.skil3.errors }}</div>
+
+            <p><label class="form-label"
+                      for="{{ form.photo_skill_3.id_for_label }}">{{ form.photo_skill_3.label }}: </label>{{ form.photo_skill_3 }}
+            </p>
+            <div class="form-error">{{ form.photo_skill_3.errors }}</div>
+        </div>
+
+        <div class="abil-form">
+            <p><strong><label class="form-label"
+                      for="{{ form.abil4.id_for_label }}">{{ form.abil4.label }}: </label></strong>{{ form.abil4 }}
+            </p>
+            <div class="form-error">{{ form.abil4.errors }}</div>
+
+            <p><label class="form-label"
+                      for="{{ form.skil4.id_for_label }}">{{ form.skil4.label }}: </label>{{ form.skil4 }}
+            </p>
+            <div class="form-error">{{ form.skil4.errors }}</div>
+
+            <p><label class="form-label"
+                      for="{{ form.photo_skill_4.id_for_label }}">{{ form.photo_skill_4.label }}: </label>{{ form.photo_skill_4 }}
+            </p>
+            <div class="form-error">{{ form.photo_skill_4.errors }}</div>
+        </div>
+
+        <div class="abil-form">
+            <p><strong><label class="form-label"
+                      for="{{ form.abil5.id_for_label }}">{{ form.abil5.label }}: </label></strong>{{ form.abil5 }}
+            </p>
+            <div class="form-error">{{ form.abil5.errors }}</div>
+
+            <p><label class="form-label"
+                      for="{{ form.skil5.id_for_label }}">{{ form.skil5.label }}: </label>{{ form.skil5 }}
+            </p>
+            <div class="form-error">{{ form.skil5.errors }}</div>
+
+            <p><label class="form-label"
+                      for="{{ form.photo_skill_5.id_for_label }}">{{ form.photo_skill_5.label }}: </label>{{ form.photo_skill_5 }}
+            </p>
+            <div class="form-error">{{ form.photo_skill_5.errors }}</div>
+        </div>
+
+        <div class="abil-form">
+            <p><strong><label class="form-label"
+                      for="{{ form.abil6.id_for_label }}">{{ form.abil6.label }}: </label></strong>{{ form.abil6 }}
+            </p>
+            <div class="form-error">{{ form.abil6.errors }}</div>
+
+            <p><label class="form-label"
+                      for="{{ form.skil6.id_for_label }}">{{ form.skil6.label }}: </label>{{ form.skil6 }}
+            </p>
+            <div class="form-error">{{ form.skil6.errors }}</div>
+
+            <p><label class="form-label"
+                      for="{{ form.photo_skill_6.id_for_label }}">{{ form.photo_skill_6.label }}: </label>{{ form.photo_skill_6 }}
+            </p>
+            <div class="form-error">{{ form.photo_skill_6.errors }}</div>
+        </div>
+
+        <div class="abil-form">
+            <p><strong><label class="form-label"
+                      for="{{ form.abil7.id_for_label }}">{{ form.abil7.label }}: </label></strong>{{ form.abil7 }}
+            </p>
+            <div class="form-error">{{ form.abil7.errors }}</div>
+
+            <p><label class="form-label"
+                      for="{{ form.skil7.id_for_label }}">{{ form.skil7.label }}: </label>{{ form.skil7 }}
+            </p>
+            <div class="form-error">{{ form.skil7.errors }}</div>
+
+            <p><label class="form-label"
+                      for="{{ form.photo_skill_7.id_for_label }}">{{ form.photo_skill_7.label }}: </label>{{ form.photo_skill_7 }}
+            </p>
+            <div class="form-error">{{ form.photo_skill_7.errors }}</div>
+        </div>
+
+        <div class="abil-form">
+            <p><strong><label class="form-label"
+                      for="{{ form.abil8.id_for_label }}">{{ form.abil8.label }}: </label></strong>{{ form.abil8 }}
+            </p>
+            <div class="form-error">{{ form.abil8.errors }}</div>
+
+            <p><label class="form-label"
+                      for="{{ form.skil8.id_for_label }}">{{ form.skil8.label }}: </label>{{ form.skil8 }}
+            </p>
+            <div class="form-error">{{ form.skil8.errors }}</div>
+
+            <p><label class="form-label"
+                      for="{{ form.photo_skill_8.id_for_label }}">{{ form.photo_skill_8.label }}: </label>{{ form.photo_skill_8 }}
+            </p>
+            <div class="form-error">{{ form.photo_skill_8.errors }}</div>
+        </div>
+
+        <div class="abil-form">
+            <p><strong><label class="form-label"
+                      for="{{ form.abil9.id_for_label }}">{{ form.abil9.label }}: </label></strong>{{ form.abil9 }}
+            </p>
+            <div class="form-error">{{ form.abil9.errors }}</div>
+
+            <p><label class="form-label"
+                      for="{{ form.skil9.id_for_label }}">{{ form.skil9.label }}: </label>{{ form.skil9 }}
+            </p>
+            <div class="form-error">{{ form.skil9.errors }}</div>
+
+            <p><label class="form-label"
+                      for="{{ form.photo_skill_9.id_for_label }}">{{ form.photo_skill_9.label }}: </label>{{ form.photo_skill_9 }}
+            </p>
+            <div class="form-error">{{ form.photo_skill_9.errors }}</div>
+        </div>
+
+        <div class="abil-form">
+            <p><strong><label class="form-label"
+                      for="{{ form.abil10.id_for_label }}">{{ form.abil10.label }}: </label></strong>{{ form.abil10 }}
+            </p>
+            <div class="form-error">{{ form.abil10.errors }}</div>
+
+            <p><label class="form-label"
+                      for="{{ form.skil10.id_for_label }}">{{ form.skil10.label }}: </label>{{ form.skil10 }}
+            </p>
+            <div class="form-error">{{ form.skil10.errors }}</div>
+
+            <p><label class="form-label"
+                      for="{{ form.photo_skill_10.id_for_label }}">{{ form.photo_skill_10.label }}: </label>{{ form.photo_skill_10 }}
+            </p>
+            <div class="form-error">{{ form.photo_skill_10.errors }}</div>
+        </div>
+
+        <div class="abil-form">
+            <p><strong><label class="form-label"
+                      for="{{ form.abil11.id_for_label }}">{{ form.abil11.label }}: </label></strong>{{ form.abil11 }}
+            </p>
+            <div class="form-error">{{ form.abil11.errors }}</div>
+
+            <p><label class="form-label"
+                      for="{{ form.skil11.id_for_label }}">{{ form.skil11.label }}: </label>{{ form.skil11 }}
+            </p>
+            <div class="form-error">{{ form.skil11.errors }}</div>
+
+            <p><label class="form-label"
+                      for="{{ form.photo_skill_11.id_for_label }}">{{ form.photo_skill_11.label }}: </label>{{ form.photo_skill_11 }}
+            </p>
+            <div class="form-error">{{ form.photo_skill_11.errors }}</div>
+        </div>
+        <br>
+
+        {#    {% for f in form %}#}
+        {#    <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>#}
+        {#    <div class="form-error">{{ f.errors }}</div>#}
+        {##}
+        {#    {% endfor %}#}
+
+        <button class="form-button" type="submit">Добавить</button>
+    </form>
+
+{% endblock %}
