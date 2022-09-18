@@ -8,7 +8,8 @@
     <link type="text/css" href="{% static 'characters/css/styles.css' %}" rel="stylesheet"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <link rel="shortcut icon" href="{% static 'characters/images/ico_2.png' %}" type="image/x-icon"/>
-    <meta name="viewport" content="width=device-width, initial-scale=0.1">
+    <meta name="viewport" content="width=768px, maximum-scale=1.0,
+minimum-scale=0.25"/>
 </head>
 <body>
 <table class="table-page" border="0" cellpadding="0" cellspacing="0">
@@ -16,28 +17,27 @@
         <td valign="top">
             {% block mainmenu %}
 
-            <div class="header">
-                <ul id="mainmenu" class="mainmenu">
-                    <li class="logo"><a href="{% url 'home' %}">
-                        <div class="logo"></div>
-                    </a></li>
+                <div class="header">
+                    <ul id="mainmenu" class="mainmenu">
+                        <li class="logo"><a href="{% url 'home' %}">
+                            <div class="logo"></div>
+                        </a></li>
 
-                    {% for m in menu %}
-                    <li><a href="{% url m.url_name %}">{{m.title}}</a></li>
-                    {% endfor %}
-                    {% if request.user.is_authenticated %}
-                    <li class="last"> {{user.username}} | <a href="{% url 'logout' %}">Выйти</a></li>
-                    {% else %}
-                    <li class="last"><a href="{% url 'register' %}">Регистрация</a> | <a href="{% url 'login' %}">Войти</a></li>
-                    {% endif %}
-                </ul>
-            </div>
+                        {% for m in menu %}
+                            <li><a href="{% url m.url_name %}">{{ m.title }}</a></li>
+                        {% endfor %}
+                        {% if request.user.is_authenticated %}
+                            <li class="last"> {{ user.username }} | <a href="{% url 'logout' %}">Выйти</a></li>
+                        {% else %}
+                            <li class="last"><a href="{% url 'register' %}">Регистрация</a> | <a
+                                    href="{% url 'login' %}">Войти</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
             {% endblock mainmenu %}
             <table class="table-content" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                     <!--Sidebar слева-->
-                {% load cache %}
-
                     <td valign="top" class="left-chapters">
 
                         <ul id="leftchapters">
@@ -48,14 +48,14 @@
                             {% endif %}
 
                             {% for c in cats %}
-                            {% if c.character__count > 0 %}
+                                {% if c.character__count > 0 %}
 
-                                {% if c.pk == cat_selected %}
-                                    <li class="selected">{{c.name}}</li>
-                                {% else %}
-                                    <li><a href="{{ c.get_absolute_url }}">{{c.name}}</a></li>
+                                    {% if c.pk == cat_selected %}
+                                        <li class="selected">{{ c.name }}</li>
+                                    {% else %}
+                                        <li><a href="{{ c.get_absolute_url }}">{{ c.name }}</a></li>
+                                    {% endif %}
                                 {% endif %}
-                            {% endif %}
                             {% endfor %}
 
                             <li class="share">
@@ -69,45 +69,42 @@
                     <td valign="top" class="content">
                         <!--Хлеюные крошки -->
                         {% block breadcrumbs %}
-                        {% endblock%}
+                        {% endblock %}
                         <!-- Блок контента -->
                         <div class="context-text">
                             {% block content %}
                             {% endblock %}
                             {% if page_obj.has_other_pages %}
-                            <nav class="list-pages">
-                                <ul>
-                                    {% if page_obj.has_previous %}
-                                    <li class="page-num">
-                                        <a href="?page=1">&lt;&lt;</a>
-                                    </li>
-                                    <li class="page-num">
-                                        <a href="?page={{ page_obj.previous_page_number }}">&lt;</a>
-                                    </li>
+                                <nav class="list-pages">
+                                    <ul>
+                                        {% if page_obj.has_previous %}
+                                            <li class="page-num">
+                                                <a href="?page=1">&lt;&lt;</a>
+                                            </li>
+                                            <li class="page-num">
+                                                <a href="?page={{ page_obj.previous_page_number }}">&lt;</a>
+                                            </li>
+                                        {% endif %}
+                                        {% for p in paginator.page_range %}
+                                            {% if page_obj.number == p %}
+                                                <li class="page-num page-num-selected">{{ p }}</li>
+                                            {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+                                                <li class="page-num">
+                                                    <a href="?page={{ p }}">{{ p }}</a>
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
 
-                                    {% endif %}
-
-                                    {% for p in paginator.page_range %}
-                                    {% if page_obj.number == p %}
-                                    <li class="page-num page-num-selected">{{ p }}</li>
-
-                                    {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
-
-                                    <li class="page-num">
-                                        <a href="?page={{ p }}">{{ p }}</a>
-                                    </li>
-                                    {% endif %}
-                                    {% endfor %}
-                                    {% if page_obj.has_next %}
-                                    <li class="page-num">
-                                        <a href="?page={{ page_obj.next_page_number }}">&gt;</a>
-                                    </li>
-                                    <li class="page-num">
-                                        <a href="?page={{ page_obj.paginator.num_pages }}">&gt;&gt;</a>
-                                    </li>
-                                    {% endif %}
-                                </ul>
-                            </nav>
+                                        {% if page_obj.has_next %}
+                                            <li class="page-num">
+                                                <a href="?page={{ page_obj.next_page_number }}">&gt;</a>
+                                            </li>
+                                            <li class="page-num">
+                                                <a href="?page={{ page_obj.paginator.num_pages }}">&gt;&gt;</a>
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+                                </nav>
                             {% endif %}
                         </div>
                         <!--Конец болока контента-->
